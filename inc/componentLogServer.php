@@ -2,13 +2,13 @@
 
 /**
  * Usage:
- * Add get parameter `log` to url e.g. `http://localhost:3000/?log`
+ * Add get parameter `log` to url e.g. `http://getcanopy.local/?log`
  * and all the data will be output via console.log in the dev tools
  * in the browser.
  *
  * Combine get parameter `log` with a second parameter `component` e.g.
- * `http://localhost:3000/?log&component=BlockWysiwyg` or
- * `http://localhost:3000/?log&component=BlockWysiwyg,BlockImage`
+ * `http://getcanopy.local/?log&component=BlockWysiwyg` or
+ * `http://getcanopy.local/?log&component=BlockWysiwyg,BlockImage`
  * only the data for the specified component(s) will output via
  * console.log in the dev tools in the browser.
  */

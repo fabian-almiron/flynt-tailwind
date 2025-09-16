@@ -1,0 +1,141 @@
+CANOPY DESIGN SYSTEM - FONTS & COLORS
+=====================================
+Saved on: September 16, 2025
+
+🎨 COLOR PALETTE
+================
+
+PRIMARY PALETTE:
+- Charcoal: #222225
+- Canopy Blue: #2848FF  
+- Cool Gray: #F1F3F7
+- Aqua: #0BE6C7
+- Pure White: #FFF
+
+SECONDARY PALETTE:
+- Aqua 2: #10C9CD
+- Blue 2: #217FE9
+- Dark Blue: #0E2999
+- Dark Aqua: #09A08A
+- Warm Gray: #FEFEED
+- Medium Gray: #797996
+- True Black: #000
+
+BUTTON COLORS:
+- Yellow Green: #A8E6CF
+- Teal: #0BE6C7
+- Dark Gray: #4A4A4A
+- Yellow 400: #FACC15
+- Yellow 300: #FDE047
+
+SEMANTIC COLORS:
+- Accent: #2848FF (Canopy Blue)
+- Background: #FFF (Pure White)
+- Background Secondary: #F1F3F7 (Cool Gray)
+- Border: #F1F3F7 (Cool Gray)
+- Border Secondary: #797996 (Medium Gray)
+- Text: #222225 (Charcoal)
+- Text Muted: #797996 (Medium Gray)
+- Error: hsl(343, 98%, 46%)
+
+THEME VARIATIONS:
+Light Theme:
+- Background: #FEFEED (Warm Gray)
+- Text: #0E2999 (Dark Blue)
+- Accent: #217FE9 (Blue 2)
+
+Dark Theme:
+- Background: #222225 (Charcoal)
+- Background Secondary: #000 (True Black)
+- Text: #FFF (Pure White)
+- Text Muted: #F1F3F7 (Cool Gray)
+- Accent: #0BE6C7 (Aqua)
+
+📝 TYPOGRAPHY
+=============
+
+FONT FAMILIES:
+- Heading Font: 'Domaine Disp Nar', Georgia, serif
+- Text Font: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif
+
+FONT WEIGHTS:
+- Regular: 400
+- Semibold: 600
+- Bold: 700
+
+FONT SIZES (Responsive):
+- H1: clamp(4rem, 6vw + 2rem, 6.375rem)     /* 85pt = ~6.375rem */
+- H2: clamp(2.5rem, 4vw + 1rem, 4.05rem)    /* 54pt = ~4.05rem */
+- H3: clamp(1.75rem, 2.5vw + 0.5rem, 2.4rem) /* 32pt = ~2.4rem */
+- H4: clamp(1.75rem, 2.5vw + 0.5rem, 2.4rem) /* 32pt = ~2.4rem */
+- H5: clamp(1.125rem, 1.5vw + 0.25rem, 1.5rem) /* 20pt = ~1.5rem */
+- H6: clamp(1.125rem, 1.5vw + 0.25rem, 1.5rem) /* 20pt = ~1.5rem */
+- Body: clamp(1rem, 1.25vw + 0.25rem, 1.35rem) /* 18pt = ~1.35rem */
+- Body Small: 1rem
+
+TYPOGRAPHY SPECIFICATIONS:
+- H1: Domaine Display Bold, 85pt, tracking 0, line-height auto
+- H2: Work Sans Bold, 54pt, line-height auto
+- H3: Domaine Display Bold Italic, 32pt, line-height 140%
+- H4: Work Sans Semibold, 32pt, tracking 0
+- H5: Work Sans Bold, All-Caps, 20pt, Blue #217FE9
+- H6: Work Sans Regular, sentence-case, 20pt, tracking 0
+- P: Work Sans Regular, sentence-case, 18pt, leading 150%, tracking 0
+
+LINE HEIGHTS:
+- H1: auto
+- H2: auto
+- H3: 1.4 (140%)
+- Body: 1.5 (150%)
+
+LETTER SPACING:
+- H1: 0
+- H4: 0
+- H6: 0
+- Body: 0
+
+📐 SPACING & LAYOUT
+==================
+
+CUSTOM SPACING:
+- Box Spacing: clamp(1rem, 2.50vw + 0.25rem, 2.25rem)
+- Container Spacing: clamp(1rem, 2.5vw + 0.25rem, 2.25rem)
+- Component Spacing: clamp(3rem, 6.5vw + 1.05rem, 6.25rem)
+- Flow Space: 1.5625rem
+- Column Gap: clamp(2.5rem, 2.5vw + 1.75rem, 3.75rem)
+
+MAX WIDTHS:
+- Content: 700px
+- Content Wide: 900px
+- Content Full: 1200px
+
+📱 BREAKPOINTS
+==============
+- Mobile Horizontal: 480px
+- Tablet: 768px
+- Tablet Horizontal: 1024px
+- Desktop: 1280px
+
+🔧 TAILWIND CONFIG REFERENCE
+============================
+
+Colors can be used in Tailwind as:
+- bg-charcoal, text-charcoal
+- bg-canopy-blue, text-canopy-blue
+- bg-cool-gray, text-cool-gray
+- etc.
+
+Font families:
+- font-heading (Domaine Disp Nar)
+- font-text (Work Sans)
+
+Font sizes:
+- text-h1, text-h2, text-h3, text-h4, text-h5, text-h6
+- text-body, text-body-small
+
+Spacing:
+- p-box, py-component, space-y-flow
+- max-w-content, max-w-content-wide, max-w-content-full
+
+Breakpoints:
+- mobile-horizontal:, tablet:, tablet-horizontal:, desktop:

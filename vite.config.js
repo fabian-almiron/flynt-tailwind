@@ -5,7 +5,7 @@ import globImporter from 'node-sass-glob-importer'
 import FullReload from 'vite-plugin-full-reload'
 import fs from 'fs'
 
-const wordpressHost = 'http://localhost:3000'
+const wordpressHost = 'http://getcanopy.local'
 
 const dest = './dist'
 const entries = [
