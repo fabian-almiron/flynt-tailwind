@@ -1,0 +1,72 @@
+{% if megaMenuColumns and megaMenuColumns|length > 0 %}
+  <div class="megaMenu" data-mega-menu>
+    {% set triggers = [] %}
+    {% for column in megaMenuColumns %}
+      {% if column.triggerMenuItem not in triggers %}
+        {% set triggers = triggers|merge([column.triggerMenuItem]) %}
+      {% endif %}
+    {% endfor %}
+    
+    {% for trigger in triggers %}
+      <div class="megaMenu__dropdown" data-trigger="{{ trigger|lower|replace({' ': '-'}) }}">
+        <div class="container">
+          <div class="megaMenu__content" data-trigger="{{ trigger|lower|replace({' ': '-'}) }}">
+            {% set columnsByTrigger = megaMenuColumns|filter(col => col.triggerMenuItem == trigger) %}
+            {% for col in columnsByTrigger %}
+              <div class="megaMenu__column">
+                <h3 class="megaMenu__columnTitle">{{ col.title|e }}</h3>
+                {% if col.items %}
+                  <ul class="megaMenu__list">
+                    {% for item in col.items %}
+                      <li class="megaMenu__item{{ item.featured ? ' is-featured' : '' }}">
+                        <a href="{{ item.url|e('esc_url') }}" class="megaMenu__link">
+                          {% if item.icon %}
+                            <span class="megaMenu__icon">
+                              {{ icon(item.icon, 'small') }}
+                            </span>
+                          {% endif %}
+                          <div class="megaMenu__itemContent">
+                            <span class="megaMenu__itemTitle">{{ item.title|e }}</span>
+                            {% if item.description %}
+                              <span class="megaMenu__itemDescription">{{ item.description|e }}</span>
+                            {% endif %}
+                          </div>
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <!-- FALLBACK: No mega menu data found, showing test menu -->
+  <div class="megaMenu" data-mega-menu>
+    <div class="megaMenu__dropdown" data-trigger="product">
+      <div class="container">
+        <div class="megaMenu__content">
+          <div class="megaMenu__column">
+            <h3 class="megaMenu__columnTitle">TEST COLUMN</h3>
+            <ul class="megaMenu__list">
+              <li class="megaMenu__item">
+                <a href="#" class="megaMenu__link">
+                  <span class="megaMenu__icon">
+                    {{ icon('person-person-key', 'small') }}
+                  </span>
+                  <div class="megaMenu__itemContent">
+                    <span class="megaMenu__itemTitle">Test Item</span>
+                    <span class="megaMenu__itemDescription">This is a test</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

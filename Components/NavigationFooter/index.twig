@@ -1,12 +1,146 @@
 <flynt-component name="NavigationFooter">
-  <div class="container">
-    {% if menu %}
-      <nav class="navigation" aria-label="{{ labels.ariaLabel }}">
-        {% include 'Partials/_menu.twig' with {'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel} only %}
-      </nav>
-    {% endif %}
-    {% if contentHtml %}
-      <div class="content">{{ contentHtml|e('wp_kses_post') }}</div>
-    {% endif %}
+  <div class="container footerContainer">
+    {# Top Section: Logo, Social Icons, Email Signup #}
+    <div class="footerTop">
+      <div class="footerBranding">
+        <div class="logo">
+          <img src="{{ site.theme.link }}/assets/images/white-logo.svg" alt="{{ site.name }}" />
+        </div>
+        
+        <div class="socialIcons">
+          <a href="#" class="socialIcon" aria-label="LinkedIn">
+            <img src="{{ site.theme.link }}/assets/images/linkedin.svg" alt="LinkedIn" />
+          </a>
+          <a href="#" class="socialIcon" aria-label="Facebook">
+            <img src="{{ site.theme.link }}/assets/images/facebook.svg" alt="Facebook" />
+          </a>
+          <a href="#" class="socialIcon" aria-label="Instagram">
+            <img src="{{ site.theme.link }}/assets/images/instagram.svg" alt="Instagram" />
+          </a>
+          <a href="#" class="socialIcon" aria-label="Medium">
+            <img src="{{ site.theme.link }}/assets/images/medium.svg" alt="Medium" />
+          </a>
+        </div>
+      </div>
+      
+      {# Email Signup Form #}
+      <div class="emailSignup">
+        <form class="signupForm" action="#" method="post">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Sign up for Canopy email updates" 
+            class="emailInput"
+            required
+          />
+          <button type="submit" class="submitButton" aria-label="Submit">
+            {# TODO: Add arrow icon here #}
+            →
+          </button>
+        </form>
+      </div>
+    </div>
+
+    {# Middle Section: Navigation Columns #}
+    <div class="footerNav">
+      {# Column 1: Product #}
+      <div class="navColumn">
+        <h3 class="columnTitle">PRODUCT</h3>
+        <ul class="columnLinks">
+          <li><a href="#">Client Engagement</a></li>
+          <li><a href="#">Document Management</a></li>
+          <li><a href="#">Time & Billing</a></li>
+          <li><a href="#">Workflow</a></li>
+          <li><a href="#">Insights</a></li>
+          <li><a href="#">Engagements & Proposals</a></li>
+          <li><a href="#">Transcripts & Notices</a></li>
+          <li><a href="#">Tax Resolution</a></li>
+          <li><a href="#">Firm Wide Operating System</a></li>
+        </ul>
+      </div>
+
+      {# Column 2: Company #}
+      <div class="navColumn">
+        <h3 class="columnTitle">COMPANY</h3>
+        <ul class="columnLinks">
+          <li><a href="#">Why Canopy?</a></li>
+          <li><a href="#">Compare Canopy</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      {# Column 3: Resources #}
+      <div class="navColumn">
+        <h3 class="columnTitle">RESOURCES</h3>
+        <ul class="columnLinks">
+          <li><a href="#">Implementation</a></li>
+          <li><a href="#">Customer Experience</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Canopy Roadshows</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Ebooks & Guides</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Podcast</a></li>
+          <li><a href="#">Canopy Status</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+
+      {# Column 4: More #}
+      <div class="navColumn">
+        <h3 class="columnTitle">MORE</h3>
+        <ul class="columnLinks">
+          <li><a href="#" class="newBadge">Smart Intake</a></li>
+          <li><a href="#">Canopy Mobile App</a></li>
+          <li><a href="#">Client Portal</a></li>
+          <li><a href="#">CRM</a></li>
+          <li><a href="#">Desktop Assistant</a></li>
+          <li><a href="#">Payments</a></li>
+          <li><a href="#">Secure Links</a></li>
+          <li><a href="#">eSignatures</a></li>
+          <li><a href="#">Automation</a></li>
+          <li><a href="#">Templates</a></li>
+          <li><a href="#">Integrations</a></li>
+          <li><a href="#">Developers</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+        </ul>
+      </div>
+    </div>
+
+    {# Bottom Section: Copyright, Phone, Legal Links, App Store Badges #}
+    <div class="footerBottom">
+      <div class="footerBottomLeft">
+        <span class="copyright">© {{ "now"|date("Y") }} Canopy Tax, Inc.</span>
+        <span class="separator">|</span>
+        <span class="phone">1 (855) 616 7305</span>
+        <span class="separator">|</span>
+        <a href="#">Terms & Conditions</a>
+        <span class="separator">|</span>
+        <a href="#">Privacy</a>
+        <span class="separator">|</span>
+        <a href="#">Google Data Use Disclosure</a>
+      </div>
+      
+      <div class="footerBottomRight">
+        <div class="appStoreLinks">
+          <a href="#" class="appStoreLink" aria-label="Download on the App Store">
+            <img src="{{ site.theme.link }}/assets/images/apple-app-store.png" alt="Download on the App Store" />
+          </a>
+          <a href="#" class="appStoreLink" aria-label="Get it on Google Play">
+            <img src="{{ site.theme.link }}/assets/images/google-play-store.png" alt="Get it on Google Play" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <svg class="bottomBorder" width="1396" height="9" viewBox="0 0 1396 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1046.35" width="349.649" height="9" fill="#6AE3C8"/>
+<rect x="696.702" width="349.649" height="9" fill="#10C9CD"/>
+<rect x="347.053" width="349.649" height="9" fill="#217FE9"/>
+<rect width="349.649" height="9" fill="#2B4BFF"/>
+</svg>
+
   </div>
 </flynt-component>

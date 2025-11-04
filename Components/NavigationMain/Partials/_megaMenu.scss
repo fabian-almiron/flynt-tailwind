@@ -1,0 +1,191 @@
+.megaMenu {
+  inset-block-start: 100%;
+  inset-inline: 0;
+  position: absolute;
+  z-index: 999;
+
+  &__dropdown {
+    background-color: #fff;
+    border-block-start: solid 2px var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: none;
+    inset-block-start: 0;
+    inset-inline: 0;
+    opacity: 0;
+    position: absolute;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    visibility: hidden;
+    z-index: 1000;
+
+
+    &.is-visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+
+  }
+
+  &__content {
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    max-inline-size: var(--content-max-width-full);
+    padding-block: 3rem;
+    padding-inline: 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    // Special handling for Solutions mega menu (3 columns)
+    &[data-trigger="solutions"] {
+      @media (min-width: $breakpoint-tablet) {
+        grid-template-columns: 1fr 1fr 1.2fr; // Give more space to the third column
+      }
+    }
+  }
+
+  &__column {
+    background-color: #fff;
+    border-inline-end: solid 1px rgba(0, 0, 0, 0.08);
+    color: #333;
+    padding-block: 2.5rem;
+    padding-inline: 2.5rem;
+
+    &:last-child {
+      border-inline-end: none;
+    }
+
+    // First column styling (UNCLUNK YOUR FIRM)
+    &:first-child {
+      background-color: #fff;
+    }
+
+    // Middle column styling (SOLUTIONS)
+    &:nth-child(2) {
+      background-color: #fff;
+    }
+
+    // Last column styling (FOR EVERY FIRM)
+    &:last-child {
+      background-color: #fff;
+    }
+  }
+
+  &__columnTitle {
+    color: #666;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-block-end: 2rem;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin-block-end: 1rem;
+
+    &:last-child {
+      margin-block-end: 0;
+    }
+
+    // Special highlighting for featured items
+    &.is-featured {
+      .megaMenu__link {
+        background-color: #FFF3CD;
+        border-radius: 8px;
+        padding-block: 1rem;
+        padding-inline: 1rem;
+
+        &:hover {
+          background-color: #FFE69C;
+        }
+      }
+    }
+  }
+
+  &__link {
+    align-items: flex-start;
+    border-radius: 6px;
+    color: inherit;
+    display: flex;
+    gap: 1rem;
+    padding-block: 0.75rem;
+    padding-inline: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgba(33, 127, 233, 0.05);
+      color: var(--color-accent, #217FE9);
+
+      .megaMenu__icon {
+        color: var(--color-accent, #217FE9);
+      }
+    }
+  }
+
+  &__icon {
+    color: #666;
+    flex-shrink: 0;
+    margin-block-start: 0.125rem;
+    transition: all 0.2s ease-in-out;
+
+    svg {
+      block-size: 24px;
+      inline-size: 24px;
+    }
+  }
+
+  &__itemContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__itemTitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-block-end: 0.25rem;
+  }
+
+  &__itemDescription {
+    color: #666;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    max-inline-size: 280px;
+  }
+}
+
+// Menu item hover states for triggering mega menu
+.menu {
+  .link {
+    &[data-has-mega-menu] {
+      position: relative;
+
+      &::after {
+        content: '';
+        margin-inline-start: 0.5rem;
+        // Add down arrow icon or similar indicator
+      }
+
+      &:hover,
+      &.is-mega-menu-active {
+        color: var(--color-accent);
+
+        &::after {
+          inline-size: 100%;
+        }
+      }
+    }
+  }
+}

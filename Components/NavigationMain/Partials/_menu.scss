@@ -1,28 +1,134 @@
 .menu {
   align-items: center;
   display: flex;
+  gap: 2rem;
   list-style: none;
-  margin-inline-end: -1rem;
-  padding-inline-start: 2rem;
+
+  .item {
+    position: relative;
+
+    &.has-children {
+      .link {
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .dropdown-indicator {
+        color: currentColor;
+        transition: transform 0.2s ease-in-out;
+
+        svg {
+          block-size: 12px;
+          inline-size: 12px;
+        }
+      }
+
+      &:hover,
+      &.is-submenu-active {
+        .dropdown-indicator {
+          transform: rotate(180deg);
+        }
+
+        .submenu {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+        }
+      }
+    }
+  }
 
   .link {
     color: currentColor;
     display: inline-block;
+    font-weight: 500;
     padding-block: 0.5rem;
-    padding-inline: 0.75rem;
+    padding-inline: 0.25rem;
+    position: relative;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
     will-change: color;
 
     &:hover {
-      color: var(--color-accent);
+      color: #217FE9;
+    }
+
+    &::after {
+      background-color: #217FE9;
+      block-size: 3px;
+      border-radius: 1.5px;
+      content: '';
+      inline-size: 0;
+      inset-block-start: -27px;
+      inset-inline-start: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+      transition: inline-size 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      inline-size: 100%;
+    }
+  }
+
+  .submenu {
+    background-color: var(--color-background);
+    border: solid 1px var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    inset-block-start: 100%;
+    inset-inline-start: 0;
+    list-style: none;
+    margin-block-start: 0.5rem;
+    min-inline-size: 200px;
+    opacity: 0;
+    padding-block: 0.5rem;
+    padding-inline: 0;
+    position: absolute;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    visibility: hidden;
+    z-index: 100;
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+
+  .submenu-item {
+    margin: 0;
+  }
+
+  .submenu-link {
+    color: currentColor;
+    display: block;
+    font-weight: 400;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--color-accent-light, #f0f7ff);
+      color: #217FE9;
     }
   }
 
   .current-menu-item {
     .link {
-      color: var(--color-accent);
-      text-decoration: underline;
+      color: #217FE9;
+
+      &::after {
+        inline-size: 100%;
+      }
+    }
+
+    .submenu-link {
+      color: #217FE9;
+      font-weight: 500;
     }
   }
 }

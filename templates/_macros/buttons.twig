@@ -1,0 +1,153 @@
+{# Button Macros for Easy Usage #}
+
+{# Primary Button #}
+{% macro primary(text, url = null, attributes = {}) %}
+  {% set defaultAttributes = {
+    class: 'btn btn--primary'
+  } %}
+  {% set attrs = defaultAttributes|merge(attributes) %}
+  
+  {% if url %}
+    <a href="{{ url }}" {{ _self.buildAttributes(attrs) }}>{{ text }}</a>
+  {% else %}
+    <button {{ _self.buildAttributes(attrs) }}>{{ text }}</button>
+  {% endif %}
+{% endmacro %}
+
+{# Secondary Button #}
+{% macro secondary(text, url = null, attributes = {}) %}
+  {% set defaultAttributes = {
+    class: 'btn btn--secondary'
+  } %}
+  {% set attrs = defaultAttributes|merge(attributes) %}
+  
+  {% if url %}
+    <a href="{{ url }}" {{ _self.buildAttributes(attrs) }}>{{ text }}</a>
+  {% else %}
+    <button {{ _self.buildAttributes(attrs) }}>{{ text }}</button>
+  {% endif %}
+{% endmacro %}
+
+{# Ghost Button #}
+{% macro ghost(text, url = null, variant = 'primary', attributes = {}) %}
+  {% set defaultAttributes = {
+    class: 'btn btn--ghost btn--' ~ variant
+  } %}
+  {% set attrs = defaultAttributes|merge(attributes) %}
+  
+  {% if url %}
+    <a href="{{ url }}" {{ _self.buildAttributes(attrs) }}>{{ text }}</a>
+  {% else %}
+    <button {{ _self.buildAttributes(attrs) }}>{{ text }}</button>
+  {% endif %}
+{% endmacro %}
+
+{# Button with Icon #}
+{% macro withIcon(text, iconId, url = null, variant = 'primary', iconPosition = 'left', attributes = {}) %}
+  {% set defaultAttributes = {
+    class: 'btn btn--' ~ variant
+  } %}
+  {% set attrs = defaultAttributes|merge(attributes) %}
+  
+  {% if url %}
+    <a href="{{ url }}" {{ _self.buildAttributes(attrs) }}>
+      {% if iconPosition == 'left' %}
+        {{ icon(iconId, {class: 'icon'}) }}
+        {{ text }}
+      {% else %}
+        {{ text }}
+        {{ icon(iconId, {class: 'icon'}) }}
+      {% endif %}
+    </a>
+  {% else %}
+    <button {{ _self.buildAttributes(attrs) }}>
+      {% if iconPosition == 'left' %}
+        {{ icon(iconId, {class: 'icon'}) }}
+        {{ text }}
+      {% else %}
+        {{ text }}
+        {{ icon(iconId, {class: 'icon'}) }}
+      {% endif %}
+    </button>
+  {% endif %}
+{% endmacro %}
+
+{# Progressive Form Button #}
+{% macro progressive(placeholder, buttonText = null, variant = 'primary', attributes = {}) %}
+  {% set formClass = 'progressiveForm progressiveForm--' ~ (variant == 'dark' ? 'dark' : 'light') %}
+  {% set buttonClass = 'btn btn--' ~ variant ~ ' btn--progressive progressiveForm__button' %}
+  
+  <div class="{{ formClass }}">
+    <input type="email" placeholder="{{ placeholder }}" class="progressiveForm__input">
+    <button class="{{ buttonClass }}">
+      {% if buttonText %}
+        {{ buttonText }}
+      {% else %}
+        {{ icon('arrows-arrow-open-right', {class: 'icon'}) }}
+      {% endif %}
+    </button>
+  </div>
+{% endmacro %}
+
+{# Button Group #}
+{% macro group(buttons, attached = false, vertical = false) %}
+  {% set groupClass = 'btn-group' %}
+  {% if attached %}
+    {% set groupClass = groupClass ~ ' btn-group--attached' %}
+  {% endif %}
+  {% if vertical %}
+    {% set groupClass = groupClass ~ ' btn-group--vertical' %}
+  {% endif %}
+  
+  <div class="{{ groupClass }}">
+    {% for button in buttons %}
+      {% if button.url %}
+        <a href="{{ button.url }}" class="btn btn--{{ button.variant|default('primary') }}{{ button.ghost ? ' btn--ghost' : '' }}">
+          {% if button.icon %}
+            {{ icon(button.icon, {class: 'icon'}) }}
+          {% endif %}
+          {{ button.text }}
+        </a>
+      {% else %}
+        <button class="btn btn--{{ button.variant|default('primary') }}{{ button.ghost ? ' btn--ghost' : '' }}"{{ button.disabled ? ' disabled' : '' }}>
+          {% if button.icon %}
+            {{ icon(button.icon, {class: 'icon'}) }}
+          {% endif %}
+          {{ button.text }}
+        </button>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{# CTA Button (Call to Action) #}
+{% macro cta(text, url, size = 'large', variant = 'primary', animated = false, attributes = {}) %}
+  {% set defaultAttributes = {
+    class: 'btn btn--' ~ variant ~ ' btn--' ~ size ~ (animated ? ' btn--animated' : '')
+  } %}
+  {% set attrs = defaultAttributes|merge(attributes) %}
+  
+  <a href="{{ url }}" {{ _self.buildAttributes(attrs) }}>{{ text }}</a>
+{% endmacro %}
+
+{# Loading Button #}
+{% macro loading(text, attributes = {}) %}
+  {% set defaultAttributes = {
+    class: 'btn btn--primary btn--loading',
+    disabled: true
+  } %}
+  {% set attrs = defaultAttributes|merge(attributes) %}
+  
+  <button {{ _self.buildAttributes(attrs) }}>{{ text }}</button>
+{% endmacro %}
+
+{# Helper macro to build attribute string #}
+{% macro buildAttributes(attributes) %}
+  {% for key, value in attributes %}
+    {% if value is same as(true) %}
+      {{ key }}
+    {% elseif value is not same as(false) and value is not null %}
+      {{ key }}="{{ value }}"
+    {% endif %}
+  {% endfor %}
+{% endmacro %}

@@ -5,7 +5,7 @@ import globImporter from 'node-sass-glob-importer'
 import FullReload from 'vite-plugin-full-reload'
 import fs from 'fs'
 
-const wordpressHost = 'http://getcanopy.local'
+const wordpressHost = 'https://getcanopy.local'
 
 const dest = './dist'
 const entries = [
@@ -55,7 +55,9 @@ export default defineConfig(({ mode }) => {
             cert: fs.readFileSync(env.VITE_DEV_SERVER_CERT)
           }
         : false,
-      host: 'localhost' // preserve conflicts with IpV6
+      host: 'localhost', // preserve conflicts with IpV6
+      cors: true,
+      origin: wordpressHost
     },
     build: {
       manifest: true, // generate manifest.json in outDir

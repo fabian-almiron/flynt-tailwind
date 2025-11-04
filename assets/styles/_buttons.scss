@@ -1,0 +1,473 @@
+// =============================================================================
+// CANOPY BUTTON SYSTEM
+// =============================================================================
+
+// Base button styles
+.btn {
+  --btn-padding-x: 1.5rem;
+  --btn-padding-y: 0.75rem;
+  --btn-font-size: 0.875rem;
+  --btn-font-weight: 600;
+  --btn-line-height: 1.25;
+  --btn-border-radius: 2rem;
+  --btn-border-width: 2px;
+  --btn-transition: all 0.2s ease;
+
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: var(--btn-border-width) solid transparent;
+  border-radius: var(--btn-border-radius);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  gap: 0.5rem;
+  justify-content: center;
+  letter-spacing: 0.025em;
+  line-height: var(--btn-line-height);
+  min-block-size: 44px; // Accessibility minimum
+  padding-block: var(--btn-padding-y);
+  padding-inline: var(--btn-padding-x);
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: var(--btn-transition);
+  user-select: none;
+  white-space: nowrap;
+
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  // Icon support
+  .icon {
+    flex-shrink: 0;
+    font-size: 1.125em;
+  }
+}
+
+// =============================================================================
+// SOLID BUTTONS
+// =============================================================================
+
+// Primary solid button (Aqua)
+.btn--primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-inverse);
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Secondary solid button (Canopy Blue)
+.btn--secondary {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-text-inverse);
+
+  &:hover {
+    background-color: var(--color-secondary-dark);
+    border-color: var(--color-secondary-dark);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Success solid button (Green variant of aqua)
+.btn--success {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--color-text-inverse);
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Dark solid button
+.btn--dark {
+  background-color: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-text-inverse);
+
+  &:hover {
+    background-color: var(--color-text-muted);
+    border-color: var(--color-text-muted);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Light solid button
+.btn--light {
+  background-color: var(--color-background-secondary);
+  border-color: var(--color-background-secondary);
+  color: var(--color-text);
+
+  &:hover {
+    background-color: var(--color-background-tertiary);
+    border-color: var(--color-background-tertiary);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// =============================================================================
+// GHOST BUTTONS (OUTLINE)
+// =============================================================================
+
+.btn--ghost {
+  background-color: transparent;
+  
+  &.btn--primary {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-text-inverse);
+      transform: translateY(-1px);
+    }
+  }
+
+  &.btn--secondary {
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+
+    &:hover {
+      background-color: var(--color-secondary);
+      color: var(--color-text-inverse);
+      transform: translateY(-1px);
+    }
+  }
+
+  &.btn--dark {
+    border-color: var(--color-text);
+    color: var(--color-text);
+
+    &:hover {
+      background-color: var(--color-text);
+      color: var(--color-text-inverse);
+      transform: translateY(-1px);
+    }
+  }
+
+  &.btn--light {
+    border-color: var(--color-background-secondary);
+    color: var(--color-text-muted);
+
+    &:hover {
+      background-color: var(--color-background-secondary);
+      color: var(--color-text);
+      transform: translateY(-1px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// =============================================================================
+// BUTTON SIZES
+// =============================================================================
+
+.btn--small {
+  --btn-padding-x: 1rem;
+  --btn-padding-y: 0.5rem;
+  --btn-font-size: 0.75rem;
+  min-block-size: 36px;
+}
+
+.btn--large {
+  --btn-padding-x: 2rem;
+  --btn-padding-y: 1rem;
+  --btn-font-size: 1rem;
+  min-block-size: 52px;
+}
+
+.btn--xl {
+  --btn-padding-x: 2.5rem;
+  --btn-padding-y: 1.25rem;
+  --btn-font-size: 1.125rem;
+  min-block-size: 60px;
+}
+
+// =============================================================================
+// SPECIAL BUTTON VARIANTS
+// =============================================================================
+
+// Animated button with border animation
+.btn--animated {
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    block-size: 100%;
+    content: '';
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: -100%;
+    position: absolute;
+    transition: inset-inline-start 0.5s;
+  }
+
+  &:hover::before {
+    inset-inline-start: 100%;
+  }
+}
+
+// Progressive form button (with arrow)
+.btn--progressive {
+  padding-inline-end: 3rem;
+  position: relative;
+
+  &::after {
+    background-color: currentColor;
+    block-size: 32px;
+    border-radius: 50%;
+    content: '';
+    inline-size: 32px;
+    inset-block-start: 50%;
+    inset-inline-end: 0.75rem;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E") center/16px no-repeat;
+    position: absolute;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
+  }
+
+  &:hover::after {
+    transform: translateY(-50%) translateX(4px);
+  }
+}
+
+// =============================================================================
+// BUTTON GROUPS
+// =============================================================================
+
+.btn-group {
+  display: inline-flex;
+  gap: 0.5rem;
+
+  .btn {
+    flex: 1;
+  }
+
+  &--attached {
+    gap: 0;
+
+    .btn {
+      border-radius: 0;
+
+      &:first-child {
+        border-end-start-radius: var(--btn-border-radius);
+        border-start-start-radius: var(--btn-border-radius);
+      }
+
+      &:last-child {
+        border-end-end-radius: var(--btn-border-radius);
+        border-start-end-radius: var(--btn-border-radius);
+      }
+
+      &:not(:first-child) {
+        border-inline-start-width: 0;
+      }
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+
+    &.btn-group--attached {
+      .btn {
+        &:first-child {
+          border-end-start-radius: 0;
+          border-start-end-radius: var(--btn-border-radius);
+        }
+
+        &:last-child {
+          border-end-start-radius: var(--btn-border-radius);
+          border-start-end-radius: 0;
+        }
+
+        &:not(:first-child) {
+          border-block-start-width: 0;
+          border-inline-start-width: var(--btn-border-width);
+        }
+      }
+    }
+  }
+}
+
+// =============================================================================
+// RESPONSIVE DESIGN
+// =============================================================================
+
+@media (max-width: 768px) {
+  .btn {
+    --btn-padding-x: 1.25rem;
+    --btn-padding-y: 0.625rem;
+    --btn-font-size: 0.8125rem;
+  }
+
+  .btn--large {
+    --btn-padding-x: 1.75rem;
+    --btn-padding-y: 0.875rem;
+    --btn-font-size: 0.9375rem;
+  }
+
+  .btn--xl {
+    --btn-padding-x: 2rem;
+    --btn-padding-y: 1rem;
+    --btn-font-size: 1rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    inline-size: 100%;
+
+    .btn {
+      inline-size: 100%;
+    }
+  }
+}
+
+// =============================================================================
+// ACCESSIBILITY & STATES
+// =============================================================================
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .btn {
+    --btn-border-width: 3px;
+  }
+
+  .btn--ghost {
+    &:hover {
+      border-width: 3px;
+    }
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    --btn-transition: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .btn--animated::before {
+    transition: none;
+  }
+
+  .btn--progressive::after {
+    transition: none;
+  }
+}
+
+// Focus visible (modern browsers)
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// Loading state
+.btn--loading {
+  color: transparent;
+  pointer-events: none;
+  position: relative;
+
+  &::after {
+    animation: btn-spin 1s linear infinite;
+    block-size: 1rem;
+    border: 2px solid transparent;
+    border-block-start-color: currentColor;
+    border-radius: 50%;
+    content: '';
+    inline-size: 1rem;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes btn-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+// =============================================================================
+// THEME ADAPTATIONS
+// =============================================================================
+
+[data-theme="dark"] {
+  .btn--light {
+    background-color: var(--color-background-tertiary);
+    border-color: var(--color-background-tertiary);
+
+    &:hover {
+      background-color: var(--color-background-secondary);
+      border-color: var(--color-background-secondary);
+    }
+  }
+
+  .btn--ghost.btn--light {
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+
+    &:hover {
+      background-color: var(--color-background-tertiary);
+      color: var(--color-text);
+    }
+  }
+}
+
+// Print styles
+@media print {
+  .btn {
+    background: transparent !important;
+    border: 1px solid #000 !important;
+    color: #000 !important;
+    text-decoration: underline;
+  }
+}

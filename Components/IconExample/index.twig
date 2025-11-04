@@ -1,0 +1,193 @@
+{# Icon System Examples #}
+<div class="iconExample">
+  <div class="container">
+    <h1>Icon System Examples</h1>
+    
+    {# Basic Icon Usage #}
+    <section class="iconExample__section">
+      <h2>Basic Icons</h2>
+      <div class="iconExample__grid">
+        {{ icon('add-add-small') }}
+        {{ icon('checkmarks-checkmark-large') }}
+        {{ icon('close-close-small') }}
+        {{ icon('arrows-arrow-open-right') }}
+      </div>
+    </section>
+    
+    {# Sized Icons #}
+    <section class="iconExample__section">
+      <h2>Icon Sizes</h2>
+      <div class="iconExample__sizes">
+        {{ icon('checkmarks-checkmark-large', {class: 'icon icon--small'}) }}
+        {{ icon('checkmarks-checkmark-large', {class: 'icon icon--medium'}) }}
+        {{ icon('checkmarks-checkmark-large', {class: 'icon icon--large'}) }}
+        {{ icon('checkmarks-checkmark-large', {class: 'icon icon--xl'}) }}
+      </div>
+    </section>
+    
+    {# Colored Icons #}
+    <section class="iconExample__section">
+      <h2>Icon Colors</h2>
+      <div class="iconExample__colors">
+        {{ icon('ai-sparkle-filled', {class: 'icon icon--primary'}) }}
+        {{ icon('ai-sparkle-filled', {class: 'icon icon--secondary'}) }}
+        {{ icon('ai-sparkle-filled', {class: 'icon icon--success'}) }}
+        {{ icon('ai-sparkle-filled', {class: 'icon icon--warning'}) }}
+        {{ icon('ai-sparkle-filled', {class: 'icon icon--error'}) }}
+      </div>
+    </section>
+    
+    {# Interactive Icons #}
+    <section class="iconExample__section">
+      <h2>Interactive Icons</h2>
+      <div class="iconExample__interactive">
+        {{ icon('misc-misc-gear', {class: 'icon icon--interactive'}) }}
+        {{ icon('arrow-functions-af-refresh', {class: 'icon icon--interactive icon--spin'}) }}
+        {{ icon('ai-sparkle-filled', {class: 'icon icon--interactive icon--pulse'}) }}
+      </div>
+    </section>
+    
+    {# Icon Buttons #}
+    <section class="iconExample__section">
+      <h2>Icon Buttons</h2>
+      <div class="iconExample__buttons">
+        <button class="icon-button">
+          {{ icon('crud-crud-pencil') }}
+          Edit
+        </button>
+        <button class="icon-button icon-button--primary">
+          {{ icon('add-add-small') }}
+          Add New
+        </button>
+        <button class="icon-button icon-button--secondary">
+          {{ icon('crud-crud-trash-small') }}
+          Delete
+        </button>
+        <button class="icon-button icon-button--outline">
+          {{ icon('arrows-arrow-open-right') }}
+        </button>
+      </div>
+    </section>
+    
+    {# Large Icons #}
+    <section class="iconExample__section">
+      <h2>Large Icons (Illustrations)</h2>
+      <div class="iconExample__largeIcons">
+        {{ icon('calculator', {class: 'large-icon large-icon--small'}) }}
+        {{ icon('handshake', {class: 'large-icon large-icon--medium'}) }}
+        {{ icon('rocket', {class: 'large-icon large-icon--large'}) }}
+      </div>
+    </section>
+    
+    {# Icon with Text #}
+    <section class="iconExample__section">
+      <h2>Icons with Text</h2>
+      <div class="iconExample__textCombos">
+        <div class="icon-text">
+          {{ icon('checkmarks-checkmark-circle-filled-small', {class: 'icon icon--success'}) }}
+          <span>Task completed successfully</span>
+        </div>
+        <div class="icon-text icon-text--reverse">
+          <span>Send message</span>
+          {{ icon('arrows-arrow-open-right') }}
+        </div>
+        <div class="icon-text icon-text--vertical">
+          {{ icon('light-bulb', {class: 'large-icon large-icon--small'}) }}
+          <span>Great idea!</span>
+        </div>
+      </div>
+    </section>
+    
+    {# Icon Lists #}
+    <section class="iconExample__section">
+      <h2>Icon Lists</h2>
+      <ul class="icon-list">
+        <li class="icon-list__item">
+          <div class="icon-list__icon">
+            {{ icon('checkmarks-checkmark-circle-filled-small', {class: 'icon icon--success'}) }}
+          </div>
+          <div class="icon-list__content">
+            <strong>Feature One</strong>
+            <p>Description of the first feature with icon.</p>
+          </div>
+        </li>
+        <li class="icon-list__item">
+          <div class="icon-list__icon">
+            {{ icon('shield-1', {class: 'icon icon--primary'}) }}
+          </div>
+          <div class="icon-list__content">
+            <strong>Security</strong>
+            <p>Your data is protected with enterprise-grade security.</p>
+          </div>
+        </li>
+        <li class="icon-list__item">
+          <div class="icon-list__icon">
+            {{ icon('rocket', {class: 'icon icon--accent'}) }}
+          </div>
+          <div class="icon-list__content">
+            <strong>Performance</strong>
+            <p>Lightning-fast performance for all your needs.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    
+
+    {# Theme Color Showcase #}
+    <section class="iconExample__section">
+      <h2>Brand Colors in Different Themes</h2>
+      <div class="iconExample__colorShowcase">
+        <div class="iconExample__colorGrid">
+          <div class="iconExample__colorSwatch bg-primary">
+            <span>Primary</span>
+            <code>var(--color-primary)</code>
+          </div>
+          <div class="iconExample__colorSwatch bg-secondary">
+            <span>Secondary</span>
+            <code>var(--color-secondary)</code>
+          </div>
+          <div class="iconExample__colorSwatch bg-accent">
+            <span>Accent</span>
+            <code>var(--color-accent)</code>
+          </div>
+          <div class="iconExample__colorSwatch bg-success">
+            <span>Success</span>
+            <code>var(--color-success)</code>
+          </div>
+          <div class="iconExample__colorSwatch bg-warning">
+            <span>Warning</span>
+            <code>var(--color-warning)</code>
+          </div>
+          <div class="iconExample__colorSwatch bg-error">
+            <span>Error</span>
+            <code>var(--color-error)</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {# Available Icons Debug (only show in development) #}
+    {% if constant('WP_DEBUG') %}
+    <section class="iconExample__section">
+      <h2>Available Icons (Debug)</h2>
+      <details>
+        <summary>Show all available icons</summary>
+        <div class="iconExample__debug">
+          {% set availableIcons = get_available_icons() %}
+          {% for spriteId, icons in availableIcons %}
+            <h3>{{ spriteId|title }} ({{ icons|length }} icons)</h3>
+            <div class="iconExample__debugGrid">
+              {% for iconId in icons %}
+                <div class="iconExample__debugItem">
+                  {{ icon(iconId) }}
+                  <code>{{ iconId }}</code>
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+      </details>
+    </section>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<flynt-component 
+  name="BlockTextImage" 
+  class="componentSpacing" 
+  data-theme="{{ options.theme }}"
+  style="background-color: {{ options.backgroundColor }}; color: {{ options.textColor }};"
+>
+  <div class="container">
+    <div class="content {{ layout == 'imageLeft' ? 'content--imageLeft' : 'content--imageRight' }}">
+      
+      {# Text Content #}
+      <div class="textContent">
+        {% if preTitle %}
+          <p class="preTitle">{{ preTitle|e }}</p>
+        {% endif %}
+        
+        <h2 class="title">{{ title|e }}</h2>
+        
+        {% if contentHtml %}
+          <div class="contentHtml">
+            {{ contentHtml|e('wp_kses_post') }}
+          </div>
+        {% endif %}
+        
+        {% if bulletList %}
+          <ul class="bulletList">
+            {% for item in bulletList %}
+              <li class="bulletItem">
+                <span class="bulletIcon">
+                  {{ icon('checkmarks-checkmark-circle-filled', 'small') }}
+                </span>
+                <span class="bulletText">{{ item.text|e }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        
+        {% if button and button.url %}
+          <div class="buttonWrapper">
+            <a href="{{ button.url|e('esc_url') }}" class="button" {{ button.target ? 'target="_blank" rel="noopener noreferrer"' : '' }}>
+              {{ button.title|e }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+      
+      {# Image Content #}
+      <div class="imageContent">
+        {% if image %}
+          <img 
+            src="{{ Image(image).src|e('esc_url') }}" 
+            alt="{{ Image(image).alt|e }}"
+            srcset="{{ Image(image).srcset }}"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            class="image"
+            loading="lazy"
+          />
+        {% endif %}
+      </div>
+      
+    </div>
+  </div>
+</flynt-component>
+

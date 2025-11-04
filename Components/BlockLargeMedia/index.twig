@@ -1,0 +1,133 @@
+<div class="flyntComponent blockLargeMedia" data-theme-mode="{{ backgroundColor|default('white') }}">
+  <div class="container container--{{ contentWidth|default('default') }}">
+    
+    <div class="blockLargeMedia-layout">
+      {% if heading or content %}
+        <div class="blockLargeMedia-header">
+          {% if heading %}
+            <h2 class="blockLargeMedia-heading">{{ heading }}</h2>
+          {% endif %}
+          {% if content %}
+            <div class="blockLargeMedia-content">
+              {{ content|raw }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="blockLargeMedia-mediaWrapper">
+      {% if mediaType == 'image' %}
+        {# Image Media Type #}
+        <div class="blockLargeMedia-imageContainer">
+          {% if mobileImage %}
+            {# Desktop Image #}
+            <picture class="blockLargeMedia-picture blockLargeMedia-picture--desktop">
+              {% if image.url %}
+                <img 
+                  src="{{ image.url }}" 
+                  alt="{{ image.alt|default('') }}"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                  loading="lazy"
+                  class="blockLargeMedia-image"
+                />
+              {% endif %}
+            </picture>
+            {# Mobile Image #}
+            <picture class="blockLargeMedia-picture blockLargeMedia-picture--mobile">
+              {% if mobileImage.url %}
+                <img 
+                  src="{{ mobileImage.url }}" 
+                  alt="{{ mobileImage.alt|default(image.alt|default('')) }}"
+                  width="{{ mobileImage.width }}"
+                  height="{{ mobileImage.height }}"
+                  loading="lazy"
+                  class="blockLargeMedia-image"
+                />
+              {% endif %}
+            </picture>
+          {% else %}
+            {# Single Image (No Mobile Override) #}
+            {% if image.url %}
+              <img 
+                src="{{ image.url }}" 
+                alt="{{ image.alt|default('') }}"
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+                loading="lazy"
+                class="blockLargeMedia-image"
+              />
+            {% endif %}
+          {% endif %}
+        </div>
+
+      {% elseif mediaType == 'video' and videoId %}
+        {# Video Media Type #}
+        <div class="blockLargeMedia-videoContainer" data-mobile-behavior="{{ mobileVideoBehavior|default('video') }}">
+          
+          {# Fallback Image (for no-JS or video load failure) #}
+          {% if fallbackImage.url %}
+            <noscript>
+              <img 
+                src="{{ fallbackImage.url }}" 
+                alt="{{ fallbackImage.alt|default('Video preview') }}"
+                class="blockLargeMedia-fallback"
+              />
+            </noscript>
+          {% endif %}
+
+          {# Wistia Video Embed #}
+          <div class="blockLargeMedia-video">
+            <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+              <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                <div 
+                  class="wistia_embed wistia_async_{{ videoId }} seo=false videoFoam=true"
+                  {% if videoPoster.url %}
+                    style="background-image:url('{{ videoPoster.url }}');background-size:cover;background-position:center;"
+                  {% endif %}
+                  role="region"
+                  aria-label="Video player"
+                >
+                  {# Wistia popover embed #}
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {# Mobile-specific behavior elements #}
+          {% if mobileVideoBehavior == 'poster' and videoPoster.url %}
+            <div class="blockLargeMedia-mobilePoster">
+              <img 
+                src="{{ videoPoster.url }}" 
+                alt="{{ videoPoster.alt|default('Video preview') }}"
+                class="blockLargeMedia-image"
+              />
+            </div>
+          {% elseif mobileVideoBehavior == 'fallback' and fallbackImage.url %}
+            <div class="blockLargeMedia-mobileFallback">
+              <img 
+                src="{{ fallbackImage.url }}" 
+                alt="{{ fallbackImage.alt|default('Video preview') }}"
+                class="blockLargeMedia-image"
+              />
+            </div>
+          {% endif %}
+        </div>
+
+        {# Include Wistia JavaScript SDK #}
+        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
+      {% else %}
+        {# No valid media provided #}
+        <div class="blockLargeMedia-placeholder">
+          <p>No media configured. Please select a media type and provide the required content.</p>
+        </div>
+      {% endif %}
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

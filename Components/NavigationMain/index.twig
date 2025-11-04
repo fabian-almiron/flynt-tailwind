@@ -1,10 +1,18 @@
 <flynt-component load:on="idle" load:on:media="(min-width: 1024px)" name="NavigationMain">
   <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
     <div class="container">
-      {% include 'Partials/_logo.twig' with {'logo': logo, 'site': site} only %}
-      {% if menu %}
-        {% include 'Partials/_menu.twig' with {'items': menu.items} only %}
+      <div class="navigation__left">
+        {% include 'Partials/_logo.twig' with {'logo': logo, 'site': site} only %}
+        {% if menu %}
+          {% include 'Partials/_menu.twig' with {'items': menu.items} only %}
+        {% endif %}
+      </div>
+      {% if actionButtons %}
+        {% include 'Partials/_actionButtons.twig' with {'buttons': actionButtons} only %}
       {% endif %}
     </div>
+    {% if megaMenuColumns %}
+      {% include 'Partials/_megaMenu.twig' with {'megaMenuColumns': megaMenuColumns} only %}
+    {% endif %}
   </nav>
 </flynt-component>

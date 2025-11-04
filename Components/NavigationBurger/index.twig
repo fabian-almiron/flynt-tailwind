@@ -9,5 +9,24 @@
     {% if menu %}
       {% include 'Partials/_menu.twig' with {'items': menu.items} only %}
     {% endif %}
+    {% if actionButtons %}
+      <div class="mobileActionButtons">
+        {% for button in actionButtons %}
+          {% if button.style == 'text' %}
+            <a class="mobileActionButtons__link" href="{{ button.url|e('esc_url') }}">
+              {{ button.text|e }}
+            </a>
+          {% elseif button.style == 'outline' %}
+            <a class="btn btn--ghost btn--primary" href="{{ button.url|e('esc_url') }}">
+              {{ button.text|e }}
+            </a>
+          {% elseif button.style == 'primary' %}
+            <a class="btn btn--primary" href="{{ button.url|e('esc_url') }}">
+              {{ button.text|e }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </nav>
 </flynt-component>

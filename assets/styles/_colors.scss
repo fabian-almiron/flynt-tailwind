@@ -1,0 +1,270 @@
+// =============================================================================
+// COLOR UTILITY CLASSES
+// =============================================================================
+
+// Background colors
+.bg-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-text-inverse);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+.bg-success {
+  background-color: var(--color-success);
+  color: var(--color-text-inverse);
+}
+
+.bg-warning {
+  background-color: var(--color-warning);
+  color: var(--color-text-inverse);
+}
+
+.bg-error {
+  background-color: var(--color-error);
+  color: var(--color-text-inverse);
+}
+
+.bg-info {
+  background-color: var(--color-info);
+  color: var(--color-text-inverse);
+}
+
+.bg-light {
+  background-color: var(--color-background-secondary);
+  color: var(--color-text);
+}
+
+.bg-dark {
+  background-color: var(--color-text);
+  color: var(--color-text-inverse);
+}
+
+.bg-white {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+// Text colors
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.text-error {
+  color: var(--color-error);
+}
+
+.text-info {
+  color: var(--color-info);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-inverse {
+  color: var(--color-text-inverse);
+}
+
+// Border colors
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.border-secondary {
+  border-color: var(--color-secondary);
+}
+
+.border-accent {
+  border-color: var(--color-accent);
+}
+
+.border-light {
+  border-color: var(--color-border);
+}
+
+.border-dark {
+  border-color: var(--color-border-secondary);
+}
+
+// =============================================================================
+// BRAND COLOR COMBINATIONS
+// =============================================================================
+
+// Canopy signature combinations
+.canopy-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-text-inverse);
+}
+
+.canopy-gradient-reverse {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+  color: var(--color-text-inverse);
+}
+
+.canopy-gradient-subtle {
+  background: linear-gradient(135deg, var(--color-background-secondary) 0%, var(--color-background-tertiary) 100%);
+  color: var(--color-text);
+}
+
+// Brand-specific button styles
+.btn-canopy {
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: var(--color-text-inverse);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-canopy-outline {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-canopy-secondary {
+  background: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-text-inverse);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--color-secondary-dark);
+    border-color: var(--color-secondary-dark);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Status indicators
+.status-active {
+  background-color: var(--color-success);
+  color: var(--color-text-inverse);
+}
+
+.status-pending {
+  background-color: var(--color-warning);
+  color: var(--color-text-inverse);
+}
+
+.status-inactive {
+  background-color: var(--color-text-muted);
+  color: var(--color-text-inverse);
+}
+
+.status-error {
+  background-color: var(--color-error);
+  color: var(--color-text-inverse);
+}
+
+// =============================================================================
+// ACCESSIBILITY & CONTRAST
+// =============================================================================
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: #{$charcoal};
+    --color-border-secondary: #{$charcoal};
+  }
+
+  .text-muted {
+    color: var(--color-text);
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .canopy-gradient,
+  .canopy-gradient-reverse,
+  .btn-canopy,
+  .btn-canopy-outline,
+  .btn-canopy-secondary {
+    transition: none;
+  }
+
+  .btn-canopy:hover,
+  .btn-canopy-outline:hover,
+  .btn-canopy-secondary:hover {
+    transform: none;
+  }
+}
+
+// =============================================================================
+// THEME-SPECIFIC OVERRIDES
+// =============================================================================
+
+[data-theme="dark"] {
+  .bg-light {
+    background-color: var(--color-background-tertiary);
+  }
+
+  .canopy-gradient-subtle {
+    background: linear-gradient(135deg, var(--color-background-tertiary) 0%, var(--color-background-secondary) 100%);
+  }
+}
+
+// Print styles
+@media print {
+  .canopy-gradient,
+  .canopy-gradient-reverse,
+  .canopy-gradient-subtle {
+    background: var(--color-background) !important;
+    color: var(--color-text) !important;
+  }
+
+  .bg-primary,
+  .bg-secondary,
+  .bg-accent,
+  .bg-dark {
+    background: var(--color-background) !important;
+    color: var(--color-text) !important;
+  }
+}

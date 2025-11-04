@@ -1,26 +1,312 @@
 flynt-component[name='NavigationFooter'] {
+  background-color: $charcoal;
+  color: $pure-white;
   font-size: var(--font-size-body-small);
+  position: relative;
+
 
   .container {
-    padding-block: var(--component-spacing);
-    text-align: center;
+    max-width: var(--content-max-width-full);
+    margin: 0 auto;
+    padding: 48px var(--container-spacing);
 
     @media (min-width: $breakpoint-tablet) {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      padding-block: 36px;
+      padding: 64px var(--container-spacing);
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      padding: 80px var(--container-spacing);
+    }
+
+    &.footerContainer {
+      padding-bottom: 0;
     }
   }
 
-  .content {
-    margin-block: var(--flow-space) 0;
-    margin-inline: 0;
+  // =============================================================================
+  // TOP SECTION: Logo, Social Icons, Email Signup
+  // =============================================================================
+  
+  .footerTop {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba($pure-white, 0.15);
 
     @media (min-width: $breakpoint-tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+    }
+  }
+
+  .footerBranding {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (min-width: $breakpoint-tablet) {
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+  }
+
+  .logo {
+    img {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+  }
+
+  .socialIcons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .socialIcon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+
+  .emailSignup {
+    flex: 1;
+    max-width: 100%;
+
+    @media (min-width: $breakpoint-tablet) {
+      max-width: 480px;
+    }
+  }
+
+  .signupForm {
+    display: flex;
+    background-color: $pure-white;
+    border-radius: 50px;
+    overflow: hidden;
+    height: 52px;
+  }
+
+  .emailInput {
+    flex: 1;
+    border: none;
+    padding: 0 24px;
+    font-size: 1rem;
+    font-family: var(--font-family-text);
+    color: $charcoal;
+    background-color: transparent;
+
+    &::placeholder {
+      color: $medium-gray;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .submitButton {
+    width: 52px;
+    height: 52px;
+    background-color: $aqua;
+    border: none;
+    border-radius: 50%;
+    color: $charcoal;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+
+    &:hover {
+      background-color: $aqua-2;
+    }
+
+    &:focus {
+      outline: 2px solid $aqua;
+      outline-offset: 2px;
+    }
+  }
+
+  // =============================================================================
+  // MIDDLE SECTION: Navigation Columns
+  // =============================================================================
+  
+  .footerNav {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 48px 0;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+      padding: 64px 0;
+    }
+  }
+
+  .navColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .columnTitle {
+    font-family: var(--font-family-text);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $medium-gray;
+    margin: 0;
+  }
+
+  .columnLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    li {
       margin: 0;
     }
+
+    a {
+      color: $pure-white;
+      text-decoration: none;
+      font-size: 1rem;
+      line-height: 1.5;
+      transition: color 0.2s ease;
+      display: inline-block;
+
+      &:hover {
+        color: $aqua;
+      }
+
+      &.newBadge {
+        position: relative;
+        padding-left: 0;
+
+        &::before {
+          content: 'NEW';
+          display: inline-block;
+          background-color: $aqua;
+          color: $charcoal;
+          font-size: 0.625rem;
+          font-weight: 700;
+          padding: 2px 6px;
+          border-radius: 4px;
+          margin-right: 8px;
+          vertical-align: middle;
+          letter-spacing: 0.05em;
+        }
+      }
+    }
   }
 
-  @import 'Partials/menu';
+  // =============================================================================
+  // BOTTOM SECTION: Copyright, Phone, Legal Links, App Store Badges
+  // =============================================================================
+  
+  .footerBottom {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 48px;
+    font-size: 0.875rem;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 48px;
+      padding-bottom: 30px;
+    }
+  }
+
+  .footerBottomLeft {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+
+    .copyright,
+    .phone {
+      white-space: nowrap;
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+
+      &:hover {
+        color: $pure-white;
+      }
+    }
+
+    .separator {
+      color: #2B4BFF;
+    }
+  }
+
+  .footerBottomRight {
+    display: flex;
+    justify-content: flex-start;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      justify-content: flex-end;
+    }
+  }
+
+  .appStoreLinks {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .appStoreLink {
+    display: block;
+    height: 40px;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+  }
 }

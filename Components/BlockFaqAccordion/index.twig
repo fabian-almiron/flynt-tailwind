@@ -1,0 +1,54 @@
+<flynt-component 
+  name="BlockFaqAccordion" 
+  class="componentSpacing" 
+  data-theme="{{ options.theme }}"
+>
+  <div class="container">
+    
+    {# Header Section #}
+    <div class="header">
+      {% if title %}
+        <h2 class="title">{{ title|e }}</h2>
+      {% endif %}
+      
+      {% if subtitle %}
+        <p class="subtitle">
+          {{ subtitle|e }}
+          {% if supportLink and supportLink.url %}
+            <a href="{{ supportLink.url|e('esc_url') }}" class="supportLink" {{ supportLink.target ? 'target="_blank" rel="noopener noreferrer"' : '' }}>
+              {{ supportLink.title|e }}
+            </a>
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+
+    {# FAQ Accordion Items #}
+    {% if faqItems %}
+      <div class="accordion">
+        {% for item in faqItems %}
+          <div class="accordionItem {{ item.openByDefault ? 'is-open' : '' }}" data-accordion-item>
+            <button class="accordionHeader" data-accordion-trigger aria-expanded="{{ item.openByDefault ? 'true' : 'false' }}">
+              <span class="accordionQuestion">{{ item.question|e }}</span>
+              <span class="accordionIcon">
+                <span class="iconPlus">
+                  {{ icon('add-add-circle-plus', 'small') }}
+                </span>
+                <span class="iconMinus">
+                  {{ icon('remove-remove-circle-minus', 'small') }}
+                </span>
+              </span>
+            </button>
+            <div class="accordionContent" data-accordion-content>
+              <div class="accordionAnswer">
+                {{ item.answer|e('wp_kses_post') }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</flynt-component>
+

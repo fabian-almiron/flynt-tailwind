@@ -1,29 +1,118 @@
+// =============================================================================
+// CANOPY BRAND COLORS
+// =============================================================================
+
+// Primary Palette
+$charcoal: #222225; // rgb(34, 34, 37)
+$canopy-blue: #2B48FF; // rgb(43, 72, 255)
+$cool-gray: #F1F3F7; // rgb(241, 243, 247)
+$aqua: #0BE6C7; // rgb(11, 230, 199)
+$pure-white: #FFF; // rgb(255, 255, 255)
+
+// Secondary Palette
+$aqua-2: #10C9CD; // rgb(16, 201, 205)
+$blue-2: #217FE9; // rgb(33, 127, 233)
+$dark-blue: #0E2998; // rgb(14, 41, 152)
+$dark-aqua: #096A89; // rgb(9, 106, 137)
+$warm-gray: #EFF0ED; // rgb(239, 240, 237)
+$medium-gray: #797986; // rgb(121, 121, 134)
+$true-black: #000; // rgb(0, 0, 0)
+
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
 :root,
 [data-theme="reset"] {
-  --color-accent: hsla(212, 100%, 45%, 1);
-  --color-background: hsla(0, 0%, 100%, 1);
-  --color-background-secondary: hsla(0, 0%, 19%, 0.08);
-  --color-border: hsl(0, 0%, 90%);
-  --color-border-secondary: hsl(0, 0%, 19%, 0.68);
-  --color-text: hsl(0, 0%, 19%, 1);
-  --color-text-muted: hsla(0, 0%, 19%, 0.8);
-  --color-error: hsl(343, 98%, 46%);
+  // Primary brand colors
+  --color-primary: #{$aqua};
+  --color-primary-dark: #{$dark-aqua};
+  --color-primary-light: #{$aqua-2};
+  
+  --color-secondary: #{$canopy-blue};
+  --color-secondary-dark: #{$dark-blue};
+  --color-secondary-light: #{$blue-2};
+  
+  --color-accent: #{$aqua};
+  
+  // Neutral colors
+  --color-background: #{$pure-white};
+  --color-background-secondary: #{$cool-gray};
+  --color-background-tertiary: #{$warm-gray};
+  
+  --color-text: #{$charcoal};
+  --color-text-muted: #{$medium-gray};
+  --color-text-inverse: #{$pure-white};
+  
+  --color-border: #{rgba($medium-gray, 0.3)};
+  --color-border-secondary: #{rgba($charcoal, 0.1)};
+  
+  // Semantic colors
+  --color-success: #{$aqua};
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #{$canopy-blue};
+  
+  // Legacy support (keeping old variable names for compatibility)
+  --color-blue: #{$canopy-blue};
+  --color-aqua: #{$aqua};
 }
 
 [data-theme="light"] {
-  --color-background: hsl(212, 76%, 97%);
-  --color-text: hsla(212, 100%, 15%, 1);
-  --color-border: hsla(212, 100%, 15%, 0.7);
-  --color-border-secondary: var(--color-border);
+  // Light theme uses cooler, softer tones
+  --color-background: #{$cool-gray};
+  --color-background-secondary: #{$warm-gray};
+  --color-background-tertiary: #{rgba($pure-white, 0.8)};
+  
+  --color-text: #{$charcoal};
+  --color-text-muted: #{$medium-gray};
+  --color-text-inverse: #{$pure-white};
+  
+  --color-border: #{rgba($medium-gray, 0.4)};
+  --color-border-secondary: #{rgba($charcoal, 0.15)};
+  
+  // Slightly adjusted brand colors for better contrast on light backgrounds
+  --color-primary: #{$dark-aqua};
+  --color-primary-light: #{$aqua};
+  --color-secondary: #{$dark-blue};
+  --color-secondary-light: #{$canopy-blue};
 }
 
 [data-theme="dark"] {
-  --color-accent: hsla(79, 100%, 60%, 1);
-  --color-background: hsla(212, 100%, 15%, 1);
-  --color-background-secondary: hsl(228, 56%, 98%, 0.06);
-  --color-border-secondary: hsl(0, 0%, 90%, 0.68);
-  --color-text: hsla(0, 0%, 100%, 1);
-  --color-text-muted: hsl(0, 0%, 100%, 0.8);
+  // Dark theme uses brighter, more vibrant colors for contrast
+  --color-primary: #{$aqua};
+  --color-primary-dark: #{$dark-aqua};
+  --color-primary-light: #{$aqua-2};
+  
+  --color-secondary: #{$blue-2};
+  --color-secondary-dark: #{$dark-blue};
+  --color-secondary-light: #{$canopy-blue};
+  
+  --color-accent: #{$aqua};
+  
+  // Dark backgrounds with subtle variations
+  --color-background: #{$charcoal};
+  --color-background-secondary: #{rgba($true-black, 0.4)};
+  --color-background-tertiary: #{rgba($medium-gray, 0.15)};
+  
+  // High contrast text for readability
+  --color-text: #{$pure-white};
+  --color-text-muted: #{rgba($pure-white, 0.75)};
+  --color-text-inverse: #{$charcoal};
+  
+  // Subtle borders that work on dark backgrounds
+  --color-border: #{rgba($pure-white, 0.2)};
+  --color-border-secondary: #{rgba($pure-white, 0.1)};
+  
+  // Adjusted semantic colors for dark theme
+  --color-success: #{$aqua-2};
+  --color-warning: #FCD34D;
+  --color-error: #F87171;
+  --color-info: #{$blue-2};
+  
+  // Legacy support with dark theme adjustments
+  --color-blue: #{$blue-2};
+  --color-aqua: #{$aqua};
 }
 
 $breakpoint-mobile-horizontal: 480px;
@@ -37,16 +126,16 @@ $breakpoint-desktop: 1280px;
    * https://meowni.ca/font-style-matcher/ or
    * https://github.com/pixel-point/fontpie
    */
-  --font-family-heading: 'Public Sans', 'Trebuchet MS', sans-serif;
-  --font-family-text: 'Public Sans', 'Trebuchet MS', sans-serif;
-  --font-size-body: 1.125rem;
+  --font-family-heading: 'Domaine Display', Georgia, serif;
+  --font-family-text: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-size-body: 1.125rem; /* 18pt */
   --font-size-body-small: 1rem;
   --flow-space: 1.5625rem;
   --column-gap: clamp(2.5rem, 2.5vw + 1.75rem, 3.75rem);
 
   --content-max-width: 700px;
   --content-max-width-wide: 900px;
-  --content-max-width-full: 1200px;
+  --content-max-width-full: 1444px;
 
   --box-spacing: clamp(1rem, 2.50vw + 0.25rem, 2.25rem);
   --container-spacing: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);

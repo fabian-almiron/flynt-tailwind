@@ -24,6 +24,73 @@ add_filter('Flynt/addComponentData?name=NavigationBurger', function (array $data
 
 Options::addTranslatable('NavigationBurger', [
     [
+        'label' => __('Action Buttons', 'flynt'),
+        'name' => 'buttonsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Navigation Buttons', 'flynt'),
+        'name' => 'actionButtons',
+        'type' => 'repeater',
+        'sub_fields' => [
+            [
+                'label' => __('Button Text', 'flynt'),
+                'name' => 'text',
+                'type' => 'text',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '30',
+                ],
+            ],
+            [
+                'label' => __('Button URL', 'flynt'),
+                'name' => 'url',
+                'type' => 'url',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '40',
+                ],
+            ],
+            [
+                'label' => __('Button Style', 'flynt'),
+                'name' => 'style',
+                'type' => 'select',
+                'choices' => [
+                    'text' => __('Text Link', 'flynt'),
+                    'outline' => __('Outline Button', 'flynt'),
+                    'primary' => __('Primary Button', 'flynt'),
+                ],
+                'default_value' => 'text',
+                'wrapper' => [
+                    'width' => '30',
+                ],
+            ],
+        ],
+        'min' => 0,
+        'max' => 5,
+        'layout' => 'table',
+        'button_label' => __('Add Button', 'flynt'),
+        'default_value' => [
+            [
+                'text' => 'LOG IN',
+                'url' => '/login',
+                'style' => 'text'
+            ],
+            [
+                'text' => 'TAKE A TOUR',
+                'url' => '/tour',
+                'style' => 'outline'
+            ],
+            [
+                'text' => 'GET A DEMO',
+                'url' => '/demo',
+                'style' => 'primary'
+            ],
+        ],
+    ],
+    [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
         'type' => 'tab',

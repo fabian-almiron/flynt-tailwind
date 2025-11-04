@@ -1,0 +1,20 @@
+<!-- Debug: actionButtons exists: {{ buttons ? 'YES' : 'NO' }} -->
+<!-- Debug: actionButtons count: {{ buttons|length }} -->
+<!-- Debug: actionButtons data: {{ buttons|json_encode }} -->
+<div class="actionButtons">
+  {% for button in buttons %}
+    {% if button.style == 'text' %}
+      <a class="actionButtons__link" href="{{ button.url|e('esc_url') }}">
+        {{ button.text|e }}
+      </a>
+    {% elseif button.style == 'outline' %}
+      <a class="btn btn--ghost btn--dark" href="{{ button.url|e('esc_url') }}">
+        {{ button.text|e }}
+      </a>
+    {% elseif button.style == 'primary' %}
+      <a class="btn btn--secondary" href="{{ button.url|e('esc_url') }}">
+        {{ button.text|e }}
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>

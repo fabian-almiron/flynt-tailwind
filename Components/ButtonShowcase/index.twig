@@ -1,0 +1,278 @@
+{# Button Showcase Component #}
+<flynt-component name="ButtonShowcase" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  <div class="container">
+    <div class="buttonShowcase">
+      
+      {% if title %}
+        <h2 class="buttonShowcase__title">{{ title }}</h2>
+      {% endif %}
+      
+      {# Solid Buttons Section #}
+      <section class="buttonShowcase__section">
+        <h3 class="buttonShowcase__sectionTitle">Solid Buttons</h3>
+        <div class="buttonShowcase__grid">
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--primary">
+              Try For Free
+            </button>
+            <code>.btn--primary</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--secondary">
+              Try For Free
+            </button>
+            <code>.btn--secondary</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--success">
+              Schedule Demo
+            </button>
+            <code>.btn--success</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--dark">
+              Try For Free
+            </button>
+            <code>.btn--dark</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--light">
+              Try For Free
+            </button>
+            <code>.btn--light</code>
+          </div>
+          
+        </div>
+      </section>
+
+      {# Ghost Buttons Section #}
+      <section class="buttonShowcase__section">
+        <h3 class="buttonShowcase__sectionTitle">Ghost Buttons</h3>
+        <div class="buttonShowcase__grid">
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--ghost btn--primary">
+              Get A Demo
+            </button>
+            <code>.btn--ghost.btn--primary</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--ghost btn--secondary">
+              Get A Demo
+            </button>
+            <code>.btn--ghost.btn--secondary</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--ghost btn--dark">
+              Get A Demo
+            </button>
+            <code>.btn--ghost.btn--dark</code>
+          </div>
+          
+        </div>
+      </section>
+
+      {# Button Sizes Section #}
+      <section class="buttonShowcase__section">
+        <h3 class="buttonShowcase__sectionTitle">Button Sizes</h3>
+        <div class="buttonShowcase__sizes">
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--primary btn--small">
+              Small Button
+            </button>
+            <code>.btn--small</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--primary">
+              Default Button
+            </button>
+            <code>Default</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--primary btn--large">
+              Large Button
+            </button>
+            <code>.btn--large</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--secondary btn--xl">
+              Get A Demo
+            </button>
+            <code>.btn--xl (Big Button)</code>
+          </div>
+          
+        </div>
+      </section>
+
+      {# Special Buttons Section #}
+      <section class="buttonShowcase__section">
+        <h3 class="buttonShowcase__sectionTitle">Special Buttons</h3>
+        <div class="buttonShowcase__grid">
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--dark btn--animated">
+              Start Workflow Tour
+            </button>
+            <code>.btn--animated</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--primary btn--loading">
+              Loading...
+            </button>
+            <code>.btn--loading</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--primary" disabled>
+              Disabled Button
+            </button>
+            <code>disabled</code>
+          </div>
+          
+        </div>
+      </section>
+
+      {# Progressive Form Fields Section #}
+      <section class="buttonShowcase__section">
+        <h3 class="buttonShowcase__sectionTitle">Progressive Form Fields</h3>
+        <div class="buttonShowcase__forms">
+          
+          <div class="buttonShowcase__formItem">
+            <div class="progressiveForm progressiveForm--light">
+              <input type="email" placeholder="What's your work email?" class="progressiveForm__input">
+              <button class="btn btn--success btn--progressive progressiveForm__button">
+                Get Started
+              </button>
+            </div>
+            <code>Light background</code>
+          </div>
+          
+          <div class="buttonShowcase__formItem">
+            <div class="progressiveForm progressiveForm--dark">
+              <input type="email" placeholder="What's your work email?" class="progressiveForm__input">
+              <button class="btn btn--light btn--progressive progressiveForm__button">
+                {{ icon('arrows-arrow-open-right', {class: 'icon'}) }}
+              </button>
+            </div>
+            <code>Dark background</code>
+          </div>
+          
+          <div class="buttonShowcase__formItem">
+            <div class="progressiveForm progressiveForm--minimal">
+              <input type="email" placeholder="What's your work email?" class="progressiveForm__input">
+              <button class="btn btn--primary btn--progressive progressiveForm__button">
+                {{ icon('arrows-arrow-open-right', {class: 'icon'}) }}
+              </button>
+            </div>
+            <code>Minimal style</code>
+          </div>
+          
+        </div>
+      </section>
+
+      {# Button Groups Section #}
+      <section class="buttonShowcase__section">
+        <h3 class="buttonShowcase__sectionTitle">Button Groups</h3>
+        <div class="buttonShowcase__groups">
+          
+          <div class="buttonShowcase__item">
+            <div class="btn-group">
+              <button class="btn btn--ghost btn--primary">Cancel</button>
+              <button class="btn btn--primary">Save</button>
+            </div>
+            <code>.btn-group</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <div class="btn-group btn-group--attached">
+              <button class="btn btn--ghost btn--secondary">Previous</button>
+              <button class="btn btn--secondary">Next</button>
+            </div>
+            <code>.btn-group--attached</code>
+          </div>
+          
+        </div>
+      </section>
+
+      {# Buttons with Icons Section #}
+      <section class="buttonShowcase__section">
+        <h3 class="buttonShowcase__sectionTitle">Buttons with Icons</h3>
+        <div class="buttonShowcase__grid">
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--primary">
+              {{ icon('add-add-small', {class: 'icon'}) }}
+              Add New
+            </button>
+            <code>Icon + Text</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--secondary">
+              Download
+              {{ icon('arrows-arrow-open-down', {class: 'icon'}) }}
+            </button>
+            <code>Text + Icon</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--ghost btn--primary">
+              {{ icon('communication-communication-envelope', {class: 'icon'}) }}
+            </button>
+            <code>Icon Only</code>
+          </div>
+          
+          <div class="buttonShowcase__item">
+            <button class="btn btn--success">
+              {{ icon('checkmarks-checkmark-circle-filled-small', {class: 'icon'}) }}
+              Complete
+            </button>
+            <code>Success with Icon</code>
+          </div>
+          
+        </div>
+      </section>
+
+      {# Theme Variations #}
+      {% if constant('WP_DEBUG') %}
+      <section class="buttonShowcase__section">
+        <h3 class="buttonShowcase__sectionTitle">Theme Variations</h3>
+        <div class="buttonShowcase__themes">
+          
+          <div class="buttonShowcase__themeDemo" data-theme="light">
+            <h4>Light Theme</h4>
+            <div class="buttonShowcase__themeButtons">
+              <button class="btn btn--primary">Primary</button>
+              <button class="btn btn--ghost btn--primary">Ghost</button>
+              <button class="btn btn--light">Light</button>
+            </div>
+          </div>
+          
+          <div class="buttonShowcase__themeDemo" data-theme="dark">
+            <h4>Dark Theme</h4>
+            <div class="buttonShowcase__themeButtons">
+              <button class="btn btn--primary">Primary</button>
+              <button class="btn btn--ghost btn--primary">Ghost</button>
+              <button class="btn btn--light">Light</button>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+      {% endif %}
+
+    </div>
+  </div>
+</flynt-component>

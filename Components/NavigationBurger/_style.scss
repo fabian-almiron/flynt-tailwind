@@ -31,6 +31,47 @@ flynt-component[name='NavigationBurger'] {
     }
   }
 
+  .mobileActionButtons {
+    background-color: var(--color-background);
+    border-block-start: solid 2px var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inset-block-start: var(--navigation-height);
+    inset-inline: 0;
+    margin: 0;
+    padding: 1.5rem;
+    position: fixed;
+    z-index: 98;
+
+    .admin-bar & {
+      inset-block-start: calc(var(--navigation-height) + var(--wp-admin--admin-bar--height));
+    }
+
+    // Text link style for mobile
+    &__link {
+      color: var(--color-text);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      margin: 0 !important;
+      padding-block: 0.75rem;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s ease-in-out;
+
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+
+    // Override button margins for mobile navigation context
+    .btn {
+      margin: 0 !important;
+    }
+  }
+
   @import 'Partials/logo';
   @import 'Partials/hamburger';
   @import 'Partials/menu';

@@ -1,0 +1,243 @@
+.flyntComponent.blockLargeMedia {
+  padding: 4rem 0;
+  
+  &[data-theme-mode="gray-light"] {
+    background-color: var(--color-background-light, #f5f5f5);
+  }
+  
+  &[data-theme-mode="gray"] {
+    background-color: var(--color-background-gray, #e5e5e5);
+  }
+  
+  &[data-theme-mode="primary"] {
+    background-color: var(--color-primary, #000);
+    color: var(--color-text-inverse, #fff);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+
+    &--wide {
+      max-width: 1400px;
+    }
+
+    &--full {
+      max-width: 100%;
+      padding: 0;
+    }
+  }
+
+  // Layout Container
+  .blockLargeMedia-layout {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  // Header Section
+  .blockLargeMedia-header {
+    flex: 0 0 40%;
+    max-width: 40%;
+
+    @media (max-width: 992px) {
+      flex: 1;
+      max-width: 100%;
+    }
+  }
+
+  .blockLargeMedia-heading {
+    font-family: var(--font-heading, sans-serif);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+  }
+
+  .blockLargeMedia-content {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-muted, #666);
+
+    p {
+      margin: 0 0 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Media Wrapper
+  .blockLargeMedia-mediaWrapper {
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 992px) {
+      flex: 1;
+    }
+  }
+
+  // Image Container
+  .blockLargeMedia-imageContainer {
+    position: relative;
+    width: 100%;
+  }
+
+  .blockLargeMedia-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .blockLargeMedia-picture {
+    display: block;
+    line-height: 0;
+
+    &--desktop {
+      display: block;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+  }
+
+  // Video Container
+  .blockLargeMedia-videoContainer {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+  }
+
+  .blockLargeMedia-video {
+    position: relative;
+    width: 100%;
+  }
+
+  .wistia_responsive_padding {
+    position: relative;
+  }
+
+  .wistia_responsive_wrapper {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .wistia_embed {
+    width: 100%;
+    height: 100%;
+  }
+
+  // Mobile Video Behavior
+  .blockLargeMedia-videoContainer {
+    &[data-mobile-behavior="poster"],
+    &[data-mobile-behavior="fallback"] {
+      @media (max-width: 768px) {
+        .blockLargeMedia-video {
+          display: none;
+        }
+      }
+    }
+
+    &[data-mobile-behavior="poster"] {
+      @media (max-width: 768px) {
+        .blockLargeMedia-mobilePoster {
+          display: block;
+        }
+      }
+    }
+
+    &[data-mobile-behavior="fallback"] {
+      @media (max-width: 768px) {
+        .blockLargeMedia-mobileFallback {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .blockLargeMedia-mobilePoster,
+  .blockLargeMedia-mobileFallback {
+    display: none;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  // Fallback for no-JS
+  .blockLargeMedia-fallback {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  // Placeholder
+  .blockLargeMedia-placeholder {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+
+    p {
+      margin: 0;
+      color: #666;
+      font-size: 1rem;
+    }
+  }
+
+  // Responsive Adjustments
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+
+    .blockLargeMedia-heading {
+      font-size: 1.75rem;
+    }
+
+    .blockLargeMedia-content {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+
+    .container {
+      padding: 0 1rem;
+    }
+
+    .blockLargeMedia-layout {
+      gap: 1.5rem;
+    }
+
+    .blockLargeMedia-heading {
+      font-size: 1.5rem;
+    }
+  }
+}
+

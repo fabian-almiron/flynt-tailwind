@@ -1,0 +1,28 @@
+.actionButtons {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+
+  // Text link style for simple navigation links
+  &__link {
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    margin: 0 !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease-in-out;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  // Override button margins for navigation context
+  .btn {
+    margin: 0 !important;
+  }
+}
